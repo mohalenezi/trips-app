@@ -29,12 +29,11 @@ class AuthStore {
     }
   };
 
-  // to be done
-  //   signout = async () => {
-  //     delete instance.defaults.headers.common.Authorization;
-  //     await AsyncStorage.removeItem("myToken");
-  //     this.user = null;
-  //   };
+  signout = async () => {
+    delete instance.defaults.headers.common.Authorization;
+    await AsyncStorage.removeItem("myToken");
+    this.user = null;
+  };
   setUser = async (token) => {
     await AsyncStorage.setItem("myToken", token);
     instance.defaults.headers.common.Authorization = `Bearer ${token}`;
