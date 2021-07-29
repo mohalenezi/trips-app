@@ -14,8 +14,8 @@ import { observer } from "mobx-react";
 
 import authStore from "../../stores/authStore";
 
-const Signup = () => {
-  const [user, SetUser] = useState({
+const Signup = ({ navigation }) => {
+  const [user, setUser] = useState({
     username: "",
     password: "",
   });
@@ -40,9 +40,9 @@ const Signup = () => {
       <AuthButton onPress={handleSubmit}>
         <AuthButtonText>Sign up</AuthButtonText>
       </AuthButton>
-      {/* <AuthOther onPress={() => navigation.navigate("Signin")}>
-                Click here to sign in
-              </AuthOther> */}
+      <AuthOther onPress={() => navigation.navigate("Signin")}>
+        Click here to sign in
+      </AuthOther>
     </AuthContainer>
   );
 };
