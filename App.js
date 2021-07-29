@@ -1,21 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import "react-native-gesture-handler";
+//libraries
+import React from "react";
+import { NativeBaseProvider } from "native-base";
+
+//styles
+import { ThemeProvider } from "styled-components";
+
+//Navigation
+import { NavigationContainer } from "@react-navigation/native";
+import RootNavigator from "./components/Navigation/index";
+
+const theme = {
+  mainColor: "#293241",
+  backgroundColor: "#e0fbfc",
+  pink: "#f283a2",
+  red: "red",
+  white: "#fff",
+  blue: "#90d4ed",
+};
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NativeBaseProvider>
+      <ThemeProvider theme={theme}>
+        <NavigationContainer>
+          <RootNavigator />
+        </NavigationContainer>
+      </ThemeProvider>
+    </NativeBaseProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
