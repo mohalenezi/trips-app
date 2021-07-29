@@ -20,14 +20,14 @@ class AuthStore {
     }
   };
 
-  //   signin = async (userData) => {
-  //     try {
-  //       const res = await instance.post("/signin", userData);
-  //       this.setUser(res.data.token);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
+  signin = async (userData) => {
+    try {
+      const res = await instance.post("/signin", userData);
+      this.setUser(res.data.token);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   // to be done
   //   signout = async () => {

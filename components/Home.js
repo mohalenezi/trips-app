@@ -20,7 +20,7 @@ const Home = ({ navigation }) => {
           <Title>Trips</Title>
         </HomeUpText>
         <BottomStyling>
-          <ButtonStyling onPress={() => navigation.navigate("Signup")}>
+          <ButtonStyling onPress={() => navigation.navigate("Signin")}>
             Let the Journey Begin
           </ButtonStyling>
         </BottomStyling>

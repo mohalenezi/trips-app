@@ -37,6 +37,13 @@ export default RootNavigator = () => {
         }}
       />
       <Stack.Screen
+        name="Signin"
+        component={Signin}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
         name="Signup"
         component={Signup}
         options={{
