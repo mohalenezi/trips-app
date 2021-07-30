@@ -3,7 +3,7 @@ import { makeAutoObservable } from "mobx";
 import instance from "./instance";
 
 class TripStore {
-  Trips = [];
+  trips = [];
   loading = true;
 
   constructor() {
