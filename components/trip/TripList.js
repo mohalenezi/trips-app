@@ -13,18 +13,13 @@ import { observer } from "mobx-react";
 
 //stores
 import tripStore from "../../stores/tripStore";
-import { observe } from "mobx";
 
-const TripList = ({ trips, navigation }) => {
+const TripList = ({ navigation }) => {
   if (tripStore.loading) return <Spinner />;
-  const tripsList = trips.map((trip) => (
+  const tripsList = tripStore.Trips.map((trip) => (
     <TripItem trip={trip} key={trip.id} navigation={navigation} />
   ));
-  return (
-    <ListWrapper>
-      <List>{tripsList}</List>
-    </ListWrapper>
-  );
+  return <ListWrapper>{<List>{tripsList}</List>}</ListWrapper>;
 };
 
 export default observer(TripList);

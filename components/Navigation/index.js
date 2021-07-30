@@ -6,6 +6,7 @@ import Home from "../Home";
 import TripList from "../trip/TripList";
 import Signup from "../authentication/Signup";
 import Signin from "../authentication/Signin";
+import SignoutButton from "../buttons/SignoutButton";
 const Stack = createStackNavigator();
 
 export default RootNavigator = () => {
@@ -34,6 +35,7 @@ export default RootNavigator = () => {
         component={TripList}
         options={{
           title: "Choose your interesting Trip",
+          headerRight: () => <SignoutButton />,
         }}
       />
       <Stack.Screen
