@@ -34,7 +34,7 @@ export default RootNavigator = () => {
         name="TripList"
         component={TripList}
         options={{
-          title: "Choose your interesting Trip",
+          title: "Explore",
           headerRight: () => <SignoutButton />,
         }}
       />

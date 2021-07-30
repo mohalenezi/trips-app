@@ -16,10 +16,14 @@ import tripStore from "../../stores/tripStore";
 
 const TripList = ({ navigation }) => {
   if (tripStore.loading) return <Spinner />;
-  const tripsList = tripStore.Trips.map((trip) => (
+  const tripsList = tripStore.trips.map((trip) => (
     <TripItem trip={trip} key={trip.id} navigation={navigation} />
   ));
-  return <ListWrapper>{<List>{tripsList}</List>}</ListWrapper>;
+  return (
+    <ListWrapper>
+      <List>{tripsList}</List>
+    </ListWrapper>
+  );
 };
 
 export default observer(TripList);

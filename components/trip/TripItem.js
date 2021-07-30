@@ -16,7 +16,8 @@ const TripItem = ({ trip }) => {
     >
       <Image source={{ uri: trip.image }} style={{ width: 100, height: 100 }} />
       <Text>{trip.title}</Text>
-      <Text>{trip.description}</Text>
+      {/* its not showing description */}
+      {/* <Text>{trip.description}</Text> */}
     </List.Item>
   );
 };
