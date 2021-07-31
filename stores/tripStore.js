@@ -20,10 +20,19 @@ class TripStore {
     }
   };
 
+  createTrip = async (newTrip) => {
+    try {
+      const response = await instance.post("/trips", newTrip);
+      response.data.trips = [];
+      this.trips.push(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   getTripById = (tripId) => this.trips.find((trip) => trip.id === tripId);
 }
 
 const tripStore = new TripStore();
 tripStore.fetchTrips();
-
 export default tripStore;
