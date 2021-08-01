@@ -6,6 +6,12 @@ import { Text, Image } from "react-native";
 import { List } from "native-base";
 import { ItemTextStyled } from "./styles";
 
+/**
+ * I'm gonna ignore commented code cuz it looks like you had a bug
+ * But in general avoid leaving commented code when merging to
+ *  master, delete them before pushing
+ */
+
 //{, navigation} add navigation to trip item props to transfer you to trip details
 
 const TripItem = ({ trip }) => {
