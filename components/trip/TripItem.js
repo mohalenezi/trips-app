@@ -8,7 +8,6 @@ import { ItemTextStyled } from "./styles";
 import { AntDesign } from "@expo/vector-icons";
 import styled from "styled-components";
 
-
 import authStore from "../../stores/authStore";
 //{, navigation} add navigation to trip item props to transfer you to trip details
 
@@ -16,9 +15,6 @@ const OpenButtonStyled = styled(AntDesign)`
   color: grey;
   margin-left: 10px;
 `;
-
-const TripItem = ({ trip, navigation }) => {
-
 
 const TripItem = ({ trip, navigation }) => {
   const handelPress = () => {
@@ -43,7 +39,6 @@ const TripItem = ({ trip, navigation }) => {
           />
         </>
       )}
-
     </List.Item>
   );
 };
