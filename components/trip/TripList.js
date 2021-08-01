@@ -1,10 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 //observer
 import { observer } from "mobx-react";
 import { configure } from "mobx";
-
-import React, { useEffect } from "react";
-
 
 //native-base
 import { Button, List, Spinner } from "native-base";
