@@ -20,6 +20,7 @@ const TripModal = ({ navigation }) => {
     image: "",
   });
   const handleSubmit = async () => {
+    // remove console logs before pushing
     // console.log(trip);
     await tripStore.createTrip(trip);
     navigation.navigate("TripList");
