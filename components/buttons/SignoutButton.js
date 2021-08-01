@@ -12,7 +12,7 @@ const SignoutButtonStyled = styled(AntDesign)`
 const SignoutButton = () => {
   const navigation = useNavigation();
   const handlePress = () => {
-    authStore.signout;
+    authStore.signout();
     navigation.navigate("Home");
   };
   return <SignoutButtonStyled name="logout" size={24} onPress={handlePress} />;
