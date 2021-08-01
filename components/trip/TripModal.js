@@ -13,7 +13,8 @@ import { observer } from "mobx-react";
 
 import tripStore from "../../stores/tripStore";
 
-const TripModal = ({ navigation }) => {
+const TripModal = ({ navigation, route }) => {
+  // const { oldTrip } = route.params;
   const [trip, setTrip] = useState({
     title: "",
     description: "",

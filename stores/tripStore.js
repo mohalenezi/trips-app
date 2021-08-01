@@ -30,6 +30,17 @@ class TripStore {
     }
   };
 
+  deleteTrip = async (tripId) => {
+    try {
+      await instance.delete(`/trips/${tripId}`);
+
+      const updatedTrips = this.trips.filter((trip) => trip.id !== tripId);
+      this.trips = updatedTrips;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   getTripById = (tripId) => this.trips.find((trip) => trip.id === tripId);
 }
 
