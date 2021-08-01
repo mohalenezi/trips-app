@@ -60,3 +60,8 @@ export const ItemTextStyled = styled.Text`
   font-size: 20px;
   margin-left: 10px;
 `;
+export const TextStyled = styled.Text`
+  font-weight: 600;
+  font-size: 30px;
+  margin-left: 10px;
+`;

@@ -9,6 +9,8 @@ import Signin from "../authentication/Signin";
 import SignoutButton from "../buttons/SignoutButton";
 import TripModal from "../trip/TripModal";
 import AddModal from "../trip/AddModal";
+import TripDetail from "../trip/TripDeatil";
+
 const Stack = createStackNavigator();
 
 export default RootNavigator = () => {
@@ -37,6 +39,13 @@ export default RootNavigator = () => {
         component={TripList}
         options={{
           title: "Explore",
+          headerRight: () => <SignoutButton />,
+        }}
+      />
+      <Stack.Screen
+        name="TripDetail"
+        component={TripDetail}
+        options={{
           headerRight: () => <SignoutButton />,
         }}
       />

@@ -15,9 +15,11 @@ import UpdateButton from "../buttons/UpdateButton";
 import tripStore from "../../stores/tripStore";
 
 const TripModal = ({ navigation, route }) => {
+
   const { oldTrip } = route.params;
   // const oldTrip = { title, description, image };
   const [trip, setTrip] = useState(oldTrip);
+  
   const handleSubmit = async () => {
     await tripStore.tripUpdate(trip);
     navigation.navigate("TripList");
