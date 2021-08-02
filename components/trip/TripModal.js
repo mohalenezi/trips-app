@@ -15,18 +15,16 @@ import UpdateButton from "../buttons/UpdateButton";
 import tripStore from "../../stores/tripStore";
 
 const TripModal = ({ navigation, route }) => {
-
   const { oldTrip } = route.params;
-  // const oldTrip = { title, description, image };
   const [trip, setTrip] = useState(oldTrip);
-  
+
   const handleSubmit = async () => {
     await tripStore.tripUpdate(trip);
     navigation.navigate("TripList");
   };
   return (
     <AuthContainer>
-      <AuthTitle>Add A Trip</AuthTitle>
+      <AuthTitle>Update Trip</AuthTitle>
       <AuthTextInput
         placeholder="title"
         defaultValue={oldTrip.title}
@@ -45,13 +43,8 @@ const TripModal = ({ navigation, route }) => {
         autoCapitalize="none"
         onChangeText={(image) => setTrip({ ...trip, image })}
       />
-      <AuthButton
-        onPress={(() => navigation.navigate("TripList"), handleSubmit)}
-      >
-        <AuthButtonText>Add</AuthButtonText>
-      </AuthButton>
-      <AuthButton>
-        <UpdateButton />
+      <AuthButton onPress={handleSubmit}>
+        <AuthButtonText>Update</AuthButtonText>
       </AuthButton>
     </AuthContainer>
   );
