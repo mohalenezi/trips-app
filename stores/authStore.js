@@ -7,14 +7,16 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 class AuthStore {
   user = null;
+
   constructor() {
     makeAutoObservable(this);
   }
 
-  signup = async (newUser) => {
+  signup = async (newUser, navigation) => {
     try {
       const res = await instance.post("/signup", newUser);
       this.setUser(res.data.token);
+      navigation.replace("TripList");
     } catch (error) {
       console.error(error);
     }

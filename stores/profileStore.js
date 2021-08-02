@@ -63,7 +63,7 @@ class ProfileStore {
   //   getTripById = (tripId) => this.profiles.find((trip) => trip.id === tripId);
 
   getProfileById = (userId) =>
-    this.profiles.find((profile) => profile.userId === userId);
+    this.profiles.find((profile) => profile.userId === +userId);
 }
 
 const profileStore = new ProfileStore();
