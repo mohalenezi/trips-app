@@ -15,7 +15,7 @@ import authStore from "../../stores/authStore";
 
 const OpenButtonStyled = styled(AntDesign)`
   color: grey;
-  margin-left: 10px;
+  margin-left: 80px;
 `;
 
 const TripItem = ({ trip, navigation }) => {
@@ -34,8 +34,8 @@ const TripItem = ({ trip, navigation }) => {
       {authStore.user && (
         <>
           <OpenButtonStyled
-            name="logout"
-            size={24}
+            name="form"
+            size={25}
             onPress={handelPress}
             oldTrip={trip}
           />
