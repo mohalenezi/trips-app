@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+//observer
+import { observer } from "mobx-react";
 
 //react-native
 import { Text, Image } from "react-native";
@@ -43,4 +45,4 @@ const TripItem = ({ trip, navigation }) => {
   );
 };
 
-export default TripItem;
+export default observer(TripItem);

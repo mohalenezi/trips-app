@@ -20,10 +20,11 @@ configure({
 });
 
 const TripList = ({ navigation }) => {
+  useEffect(() => {
+    tripStore.fetchTrips();
+  }, []);
   if (tripStore.loading) return <Spinner />;
-  console.log(tripStore.trips);
-  const Trips = tripStore?.trips;
-  const tripsList = Trips.map((trip) => (
+  const tripsList = tripStore?.trips.map((trip) => (
     <TripItem trip={trip} key={trip.id} navigation={navigation} />
   ));
 
