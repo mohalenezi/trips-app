@@ -9,8 +9,9 @@ import Signin from "../authentication/Signin";
 import SignoutButton from "../buttons/SignoutButton";
 import TripModal from "../trip/TripModal";
 import AddModal from "../trip/AddModal";
-import TripDetail from "../trip/TripDeatil";
+import TripDetail from "../trip/TripDetail";
 import ProfileDetail from "../profile/ProfileDetail";
+import ProfileUpdateModal from "../profile/ProfileUpdateModal";
 
 const Stack = createStackNavigator();
 
@@ -66,6 +67,7 @@ export default RootNavigator = () => {
       />
       <Stack.Screen name="ProfileDetail" component={ProfileDetail} />
       <Stack.Screen name="TripModal" component={TripModal} />
+      <Stack.Screen name="ProfileUpdateModal" component={ProfileUpdateModal} />
       <Stack.Screen name="AddModal" component={AddModal} />
     </Stack.Navigator>
   );

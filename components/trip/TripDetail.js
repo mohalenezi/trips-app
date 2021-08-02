@@ -1,5 +1,5 @@
-import { Button, Flex, Spacer } from "native-base";
-import React from "react";
+import { Button, Flex, Spacer, Spinner } from "native-base";
+import React, { useEffect } from "react";
 import { View, Text, Image, Dimensions } from "react-native";
 import authStore from "../../stores/authStore";
 import tripStore from "../../stores/tripStore";
@@ -8,17 +8,23 @@ import ProfileButton from "../buttons/ProfileButton";
 import profileStore from "../../stores/profileStore";
 
 const TripDetail = ({ route, navigation }) => {
+  useEffect(() => {
+    tripStore.fetchTrips();
+  }, []);
+
   const dimensions = Dimensions.get("window");
   const imageHeight = Math.round(dimensions.height / 2);
   const imageWidth = dimensions.width;
   const { trip } = route.params;
 
-  console.log(trip.userId);
+  const profile = profileStore.getProfileById(trip.userId);
+  console.log(profile?.username);
 
   const handleDelete = () => {
     tripStore.deleteTrip(trip.id);
     navigation.goBack("TripList");
   };
+  if (tripStore.loading || profileStore.loading) return <Spinner />;
   return (
     <View>
       <Image
@@ -27,6 +33,8 @@ const TripDetail = ({ route, navigation }) => {
       />
       <TextStyled>{trip.title}</TextStyled>
       <Text>{trip.description}</Text>
+      {/* <TextStyled>{profile.username}</TextStyled> */}
+
       <ProfileButton userId={trip.userId} />
       {authStore.user && (
         <>

@@ -20,8 +20,7 @@ const Signup = ({ navigation }) => {
     password: "",
   });
   const handleSubmit = async () => {
-    await authStore.signup(user);
-    if (authStore.user) navigation.replace("TripList");
+    await authStore.signup(user, navigation);
   };
   return (
     <AuthContainer>

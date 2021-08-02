@@ -1,16 +1,29 @@
-import React from "react";
+import { observer } from "mobx-react";
+import { Button } from "native-base";
+import React, { useEffect } from "react";
 import { Text } from "react-native";
 import profileStore from "../../stores/profileStore";
-import authStore from "../../stores/authStore";
 
-const ProfileDetail = ({ route }) => {
+const ProfileDetail = ({ route, navigation }) => {
+  useEffect(() => {
+    profileStore.fetchProfiles();
+  }, []);
   const { userId } = route.params;
-  //   console.log(userId);
   let profile = profileStore.getProfileById(userId);
 
-  console.log(profile);
-
-  return <Text>Profile</Text>;
+  return (
+    <>
+      <Text>{profile?.username}</Text>
+      <Text>{profile?.bio}</Text>
+      <Button
+        onPress={() =>
+          navigation.navigate("ProfileUpdateModal", { oldProfile: profile })
+        }
+      >
+        Update
+      </Button>
+    </>
+  );
 };
 
-export default ProfileDetail;
+export default observer(ProfileDetail);
