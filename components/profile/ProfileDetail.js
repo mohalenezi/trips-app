@@ -2,6 +2,7 @@ import { observer } from "mobx-react";
 import { Box, Button } from "native-base";
 import React, { useEffect } from "react";
 import { Text, Image, StyleSheet, Dimensions, ScrollView } from "react-native";
+import authStore from "../../stores/authStore";
 import profileStore from "../../stores/profileStore";
 import ProfileTripList from "./ProfileTripList";
 
@@ -24,13 +25,15 @@ const ProfileDetail = ({ route, navigation }) => {
       <Text style={styles.title}>{profile?.username}</Text>
       <Text style={styles.bio}>{profile?.bio}</Text>
       <ProfileTripList userId={userId} />
-      <Button
-        onPress={() =>
-          navigation.navigate("ProfileUpdateModal", { oldProfile: profile })
-        }
-      >
-        Edit profile
-      </Button>
+      {authStore.user.id === userId && (
+        <Button
+          onPress={() =>
+            navigation.navigate("ProfileUpdateModal", { oldProfile: profile })
+          }
+        >
+          Edit profile
+        </Button>
+      )}
     </ScrollView>
   );
 };
