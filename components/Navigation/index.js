@@ -42,6 +42,8 @@ export default RootNavigator = () => {
         options={{
           title: "Explore",
           headerRight: () => <SignoutButton />,
+          headerLeft: null,
+          gestureEnabled: false, //not going to be able to go to home when you swipe
         }}
       />
       <Stack.Screen
