@@ -7,16 +7,9 @@ import { Text, Image } from "react-native";
 //native-base
 import { List } from "native-base";
 import { ItemTextStyled } from "./styles";
-import { AntDesign } from "@expo/vector-icons";
-import styled from "styled-components";
 
 import authStore from "../../stores/authStore";
 //{, navigation} add navigation to trip item props to transfer you to trip details
-
-const OpenButtonStyled = styled(AntDesign)`
-  color: grey;
-  margin-left: 80px;
-`;
 
 const TripItem = ({ trip, navigation }) => {
   const handelPress = () => {
@@ -28,19 +21,6 @@ const TripItem = ({ trip, navigation }) => {
     >
       <Image source={{ uri: trip.image }} style={{ width: 100, height: 100 }} />
       <ItemTextStyled>{trip.title}</ItemTextStyled>
-
-      {/* its not showing description */}
-      {/* <Text>{trip.description}</Text> */}
-      {authStore.user && (
-        <>
-          <OpenButtonStyled
-            name="form"
-            size={25}
-            onPress={handelPress}
-            oldTrip={trip}
-          />
-        </>
-      )}
     </List.Item>
   );
 };

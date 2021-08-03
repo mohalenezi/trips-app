@@ -6,6 +6,19 @@ import tripStore from "../../stores/tripStore";
 import { TextStyled } from "./styles";
 import ProfileButton from "../buttons/ProfileButton";
 import profileStore from "../../stores/profileStore";
+import { AntDesign } from "@expo/vector-icons";
+import styled from "styled-components";
+//observer
+import { observer } from "mobx-react";
+
+const UpdateButtonStyled = styled(AntDesign)`
+  color: green;
+  margin-left: 60px;
+`;
+const DeleteButtonStyled = styled(AntDesign)`
+  color: red;
+  margin-left: 60px;
+`;
 
 const TripDetail = ({ route, navigation }) => {
   useEffect(() => {
@@ -16,9 +29,13 @@ const TripDetail = ({ route, navigation }) => {
   const imageHeight = Math.round(dimensions.height / 2);
   const imageWidth = dimensions.width;
   const { trip } = route.params;
-
+  console.log(trip);
   const profile = profileStore.getProfileById(trip.userId);
   console.log(profile?.username);
+
+  const handelUpdate = () => {
+    navigation.navigate("TripModal", { oldTrip: trip });
+  };
 
   const handleDelete = () => {
     tripStore.deleteTrip(trip.id);
@@ -36,19 +53,25 @@ const TripDetail = ({ route, navigation }) => {
       {/* <TextStyled>{profile.username}</TextStyled> */}
 
       <ProfileButton userId={trip.userId} />
-      {authStore.user && (
+      {authStore.user.id === trip.userId && (
         <>
           <View style={{ flex: "1" }}>
             <Flex h={40} w={80} mt={10}>
-              <Button
-                onPress={() =>
-                  navigation.navigate("TripModal", { oldTrip: trip })
-                }
-              >
-                Update
-              </Button>
+              <UpdateButtonStyled
+                name="form"
+                size={35}
+                onPress={handelUpdate}
+                oldTrip={trip}
+              />
+
               <Spacer />
-              <Button onPress={handleDelete}>Delete</Button>
+              <>
+                <DeleteButtonStyled
+                  name="delete"
+                  size={35}
+                  onPress={handleDelete}
+                />
+              </>
               <Spacer />
             </Flex>
           </View>
@@ -58,4 +81,4 @@ const TripDetail = ({ route, navigation }) => {
   );
 };
 
-export default TripDetail;
+export default observer(TripDetail);
