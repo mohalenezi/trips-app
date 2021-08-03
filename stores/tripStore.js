@@ -22,7 +22,9 @@ class TripStore {
 
   createTrip = async (newTrip) => {
     try {
-      const response = await instance.post("/trips", newTrip);
+      const formData = new FormData(); //added form data by enezi and i have uploaded an image
+      for (const key in newTrip) formData.append(key, newTrip[key]);
+      const response = await instance.post("/trips", formData);
       response.data.trips = [];
       this.trips.push(response.data);
     } catch (error) {
