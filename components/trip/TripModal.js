@@ -10,7 +10,6 @@ import {
 
 //observer
 import { observer } from "mobx-react";
-import UpdateButton from "../buttons/UpdateButton";
 
 import tripStore from "../../stores/tripStore";
 
