@@ -60,6 +60,11 @@ export const ItemTextStyled = styled.Text`
   font-size: 20px;
   margin-left: 10px;
 `;
+export const ItemOwnerStyled = styled.Text`
+  font-weight: 500;
+  font-size: 15px;
+  margin-left: 10px;
+`;
 export const TextStyled = styled.Text`
   font-weight: 600;
   font-size: 30px;

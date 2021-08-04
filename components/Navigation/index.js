@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
 //components
@@ -7,6 +7,8 @@ import TripList from "../trip/TripList";
 import Signup from "../authentication/Signup";
 import Signin from "../authentication/Signin";
 import SignoutButton from "../buttons/SignoutButton";
+import profileStore from "../../stores/profileStore";
+import tripStore from "../../stores/tripStore";
 
 import TripModal from "../trip/TripModal";
 import AddModal from "../trip/AddModal";
@@ -17,6 +19,12 @@ import ProfileUpdateModal from "../profile/ProfileUpdateModal";
 const Stack = createStackNavigator();
 
 export default RootNavigator = () => {
+  useEffect(() => {
+    profileStore.fetchProfiles();
+  }, []);
+  useEffect(() => {
+    tripStore.fetchTrips();
+  }, []);
   return (
     <Stack.Navigator
       initialRouteName="Home"
@@ -50,8 +58,13 @@ export default RootNavigator = () => {
       <Stack.Screen
         name="TripDetail"
         component={TripDetail}
-        options={{
-          headerRight: () => <SignoutButton />,
+        options={({ route }) => {
+          const { trip } = route.params;
+          const profile = profileStore.getProfileById(trip.userId);
+          return {
+            title: trip.title,
+            headerRight: () => <SignoutButton />,
+          };
         }}
       />
       <Stack.Screen
@@ -68,7 +81,17 @@ export default RootNavigator = () => {
           headerShown: false,
         }}
       />
-      <Stack.Screen name="ProfileDetail" component={ProfileDetail} />
+      <Stack.Screen
+        name="ProfileDetail"
+        component={ProfileDetail}
+        options={({ route }) => {
+          const { userId } = route.params;
+          let profile = profileStore.getProfileById(userId);
+          return {
+            title: profile.username,
+          };
+        }}
+      />
       <Stack.Screen name="TripModal" component={TripModal} />
       <Stack.Screen name="ProfileUpdateModal" component={ProfileUpdateModal} />
       <Stack.Screen name="AddModal" component={AddModal} />
