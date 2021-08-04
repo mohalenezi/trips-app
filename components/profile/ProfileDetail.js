@@ -6,6 +6,7 @@ import authStore from "../../stores/authStore";
 import profileStore from "../../stores/profileStore";
 import ProfileTripList from "./ProfileTripList";
 
+//remove logs and why styleSheet? what about the styles.js
 const ProfileDetail = ({ route, navigation }) => {
   useEffect(() => {
     profileStore.fetchProfiles();

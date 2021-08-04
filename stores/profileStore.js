@@ -1,7 +1,7 @@
 import { makeAutoObservable } from "mobx";
 
 import instance from "./instance";
-
+// please remove all the comments
 class ProfileStore {
   profiles = [];
   loading = true;

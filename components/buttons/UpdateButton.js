@@ -6,11 +6,14 @@ import authStore from "../../stores/authStore";
 import styled from "styled-components";
 import tripStore from "../../stores/tripStore";
 import TripModal from "../trip/TripModal";
+// remove all the imports you are not using👆🏻
 
+//👇🏻again you know what I am gonna say
 const UpdateButtonStyled = styled(AntDesign)`
   color: grey;
   margin-left: 20%;
 `;
+// 👆🏻
 const UpdateButton = ({ oldTrip }) => {
   const navigation = useNavigation();
   const handlePress = () => {

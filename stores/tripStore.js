@@ -25,7 +25,9 @@ class TripStore {
       const formData = new FormData(); //added form data by enezi and i have uploaded an image
       for (const key in newTrip) formData.append(key, newTrip[key]);
       const response = await instance.post("/trips", formData);
+      // 👇🏻why you are doing this?
       response.data.trips = [];
+      // 👆🏻
       this.trips.push(response.data);
     } catch (error) {
       console.error(error);
@@ -39,6 +41,7 @@ class TripStore {
         `/trips/${updateTrip.id}`,
         updateTrip
       );
+      //remove the comment 👇🏻
       // response.data.trips = oldTrip;
       const trip = this.trips.find((trip) => trip.id === response.data.id);
 

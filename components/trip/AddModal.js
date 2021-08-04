@@ -38,6 +38,7 @@ const AddModal = ({ navigation }) => {
         autoCapitalize="none"
         onChangeText={(description) => setTrip({ ...trip, description })}
       />
+      {/** you didn't uuse image picker?🥺 */}
       <AuthTextInput
         placeholder="image's link"
         autoCapitalize="none"

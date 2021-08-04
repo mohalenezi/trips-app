@@ -20,10 +20,13 @@ configure({
 });
 
 const TripList = ({ navigation }) => {
+  // I love that you guys are using useEffect but why are using it?
   useEffect(() => {
     tripStore.fetchTrips();
   }, []);
   if (tripStore.loading) return <Spinner />;
+
+  //👇🏻I think you mean tripStore.trips?.map right?
   const tripsList = tripStore?.trips.map((trip) => (
     <TripItem trip={trip} key={trip.id} navigation={navigation} />
   ));

@@ -1,4 +1,4 @@
-import { Button, Flex, Spacer, Spinner } from "native-base";
+import { Button, Flex, Spacer, Spinner } from "native-base"; //remove Button you are not using it
 import React, { useEffect } from "react";
 import { View, Text, Image, Dimensions } from "react-native";
 import authStore from "../../stores/authStore";
@@ -11,6 +11,7 @@ import styled from "styled-components";
 //observer
 import { observer } from "mobx-react";
 
+// 👇🏻 guys why here? you have styles.js
 const UpdateButtonStyled = styled(AntDesign)`
   color: green;
   margin-left: 60px;
@@ -19,15 +20,18 @@ const DeleteButtonStyled = styled(AntDesign)`
   color: red;
   margin-left: 60px;
 `;
-
+// 👆🏻
 const TripDetail = ({ route, navigation }) => {
   useEffect(() => {
     tripStore.fetchTrips();
   }, []);
 
+  //remove all the logs please
   const dimensions = Dimensions.get("window");
+  // 👇🏻I would do the following as an object with two properties height and width🤩
   const imageHeight = Math.round(dimensions.height / 2);
   const imageWidth = dimensions.width;
+  // 👆🏻
   const { trip } = route.params;
   console.log(trip);
   const profile = profileStore.getProfileById(trip.userId);
@@ -50,6 +54,7 @@ const TripDetail = ({ route, navigation }) => {
       />
       <TextStyled>{trip.title}</TextStyled>
       <Text>{trip.description}</Text>
+      {/*Remove this comment 👇🏻*/}
       {/* <TextStyled>{profile.username}</TextStyled> */}
 
       <ProfileButton userId={trip.userId} />
