@@ -7,6 +7,7 @@ import TripList from "../trip/TripList";
 import Signup from "../authentication/Signup";
 import Signin from "../authentication/Signin";
 import SignoutButton from "../buttons/SignoutButton";
+
 import TripModal from "../trip/TripModal";
 import AddModal from "../trip/AddModal";
 import TripDetail from "../trip/TripDetail";

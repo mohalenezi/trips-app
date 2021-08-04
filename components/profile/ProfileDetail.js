@@ -1,7 +1,14 @@
 import { observer } from "mobx-react";
 import { Box, Button } from "native-base";
 import React, { useEffect } from "react";
-import { Text, Image, StyleSheet, Dimensions, ScrollView } from "react-native";
+import {
+  Text,
+  Image,
+  StyleSheet,
+  Dimensions,
+  ScrollView,
+  SafeAreaView,
+} from "react-native";
 import authStore from "../../stores/authStore";
 import profileStore from "../../stores/profileStore";
 import ProfileTripList from "./ProfileTripList";
@@ -13,28 +20,29 @@ const ProfileDetail = ({ route, navigation }) => {
   const { userId } = route.params;
   let profile = profileStore.getProfileById(userId);
 
-  console.log(profile.image);
   return (
-    <ScrollView>
-      <Box style={styles.container}>
-        <Image
-          source={{ uri: profile?.image }}
-          style={{ width: Dimensions.get("window").width, height: 400 }}
-        />
-      </Box>
-      <Text style={styles.title}>{profile?.username}</Text>
-      <Text style={styles.bio}>{profile?.bio}</Text>
-      <ProfileTripList userId={userId} />
-      {authStore.user.id === userId && (
-        <Button
-          onPress={() =>
-            navigation.navigate("ProfileUpdateModal", { oldProfile: profile })
-          }
-        >
-          Edit profile
-        </Button>
-      )}
-    </ScrollView>
+    <SafeAreaView>
+      <ScrollView>
+        <Box style={styles.container}>
+          <Image
+            source={{ uri: profile?.image }}
+            style={{ width: Dimensions.get("window").width, height: 400 }}
+          />
+        </Box>
+        <Text style={styles.title}>{profile?.username}</Text>
+        <Text style={styles.bio}>{profile?.bio}</Text>
+        <ProfileTripList userId={userId} />
+        {authStore.user.id === userId && (
+          <Button
+            onPress={() =>
+              navigation.navigate("ProfileUpdateModal", { oldProfile: profile })
+            }
+          >
+            Edit profile
+          </Button>
+        )}
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
