@@ -4,16 +4,17 @@ import { observer } from "mobx-react";
 import { configure } from "mobx";
 
 //native-base
-import { Button, List, Spinner } from "native-base";
-
+import { List, Spinner, Box } from "native-base";
+import { Button } from "galio-framework";
 // components
 import TripItem from "./TripItem";
 
 //stores
 import tripStore from "../../stores/tripStore";
 
-import { SafeAreaView, ScrollView } from "react-native";
-
+import { SafeAreaView, ScrollView, StyleSheet } from "react-native";
+import { Text } from "galio-framework";
+import { flex } from "styled-system";
 //to fix warning for mobx observer!
 configure({
   enforceActions: "never",
@@ -29,15 +30,34 @@ const TripList = ({ navigation }) => {
   ));
 
   return (
-    <SafeAreaView>
+    <>
       <ScrollView>
         <List>{tripsList}</List>
-        <Button onPress={() => navigation.navigate("AddModal")}>
-          Add a trip
-        </Button>
       </ScrollView>
-    </SafeAreaView>
+      <Box style={styles.container}>
+        <Button
+          onlyIcon
+          icon="pluscircleo"
+          iconFamily="antdesign"
+          iconSize={50}
+          color="#50D050"
+          iconColor="#fff"
+          style={{ width: 60, height: 60 }}
+          onPress={() => navigation.navigate("AddModal")}
+        ></Button>
+      </Box>
+    </>
   );
 };
 
 export default observer(TripList);
+
+const styles = StyleSheet.create({
+  container: {
+    justifyContent: "center",
+    alignItems: "center",
+    position: "absolute",
+    bottom: 30,
+    right: 20,
+  },
+});

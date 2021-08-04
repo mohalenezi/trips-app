@@ -7,6 +7,7 @@ import {
   AuthButtonText,
   AuthButton,
   AuthOther,
+  AuthBackground,
 } from "./styles";
 
 //stores
@@ -25,26 +26,35 @@ const Signin = ({ navigation }) => {
     if (authStore.user) navigation.replace("TripList");
   };
   return (
-    <AuthContainer>
-      <AuthTitle>Sign in</AuthTitle>
-      <AuthTextInput
-        placeholder="username"
-        autoCapitalize="none"
-        onChangeText={(username) => setUser({ ...user, username })}
-      />
-      <AuthTextInput
-        placeholder="password"
-        autoCapitalize="none"
-        secureTextEntry={true}
-        onChangeText={(password) => setUser({ ...user, password })}
-      />
-      <AuthButton onPress={handleSubmit}>
-        <AuthButtonText>Sign in</AuthButtonText>
-      </AuthButton>
-      <AuthOther onPress={() => navigation.navigate("Signup")}>
-        Click here to sign up
-      </AuthOther>
-    </AuthContainer>
+    <AuthBackground
+      source={{
+        uri: "https://wallpaperaccess.com/full/300911.jpg",
+      }}
+      blurRadius={5}
+    >
+      <AuthContainer>
+        <AuthTitle>Sign in</AuthTitle>
+        <AuthTextInput
+          placeholderTextColor="grey"
+          placeholder="username"
+          autoCapitalize="none"
+          onChangeText={(username) => setUser({ ...user, username })}
+        />
+        <AuthTextInput
+          placeholderTextColor="grey"
+          placeholder="password"
+          autoCapitalize="none"
+          secureTextEntry={true}
+          onChangeText={(password) => setUser({ ...user, password })}
+        />
+        <AuthButton onPress={handleSubmit}>
+          <AuthButtonText>Sign in</AuthButtonText>
+        </AuthButton>
+        <AuthOther onPress={() => navigation.navigate("Signup")}>
+          Click here to sign up
+        </AuthOther>
+      </AuthContainer>
+    </AuthBackground>
   );
 };
 

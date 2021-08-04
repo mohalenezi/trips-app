@@ -1,6 +1,7 @@
-import { Button, Flex, Spacer, Spinner } from "native-base";
+import { Flex, Spacer, Spinner, Box } from "native-base";
+import { Button } from "galio-framework";
 import React, { useEffect } from "react";
-import { View, Text, Image, Dimensions } from "react-native";
+import { View, Text, Image, Dimensions, StyleSheet } from "react-native";
 import authStore from "../../stores/authStore";
 import tripStore from "../../stores/tripStore";
 import { TextStyled } from "./styles";
@@ -57,21 +58,29 @@ const TripDetail = ({ route, navigation }) => {
         <>
           <View style={{ flex: "1" }}>
             <Flex h={40} w={80} mt={10}>
-              <UpdateButtonStyled
-                name="form"
-                size={35}
-                onPress={handelUpdate}
-                oldTrip={trip}
-              />
-
-              <Spacer />
-              <>
-                <DeleteButtonStyled
-                  name="delete"
-                  size={35}
+              <Box style={styles.container}>
+                <Button
+                  onlyIcon
+                  icon="form"
+                  iconFamily="antdesign"
+                  iconSize={50}
+                  color="#50D050"
+                  iconColor="#fff"
+                  style={{ width: 80, height: 80 }}
+                  onPress={handelUpdate}
+                  oldTrip={trip}
+                ></Button>
+                <Button
+                  onlyIcon
+                  icon="delete"
+                  iconFamily="antdesign"
+                  iconSize={50}
+                  color="#FF0000"
+                  iconColor="#fff"
+                  style={{ width: 80, height: 80 }}
                   onPress={handleDelete}
-                />
-              </>
+                ></Button>
+              </Box>
               <Spacer />
             </Flex>
           </View>
@@ -82,3 +91,16 @@ const TripDetail = ({ route, navigation }) => {
 };
 
 export default observer(TripDetail);
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    alignItems: "center",
+    position: "absolute",
+    bottom: 30,
+    right: 20,
+    marginLeft: 50,
+    justifyContent: "space-between",
+  },
+});

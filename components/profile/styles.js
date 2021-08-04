@@ -24,6 +24,17 @@ export const AuthContainer = styled.View`
   padding-left: 60px;
 `;
 
+export const HomeBackground = styled.ImageBackground`
+  width: 100%;
+  height: 100%;
+  flex: 1;
+`;
+
+export const OverlayContainer = styled.View`
+  flex: 1;
+  background-color: rgba(0, 0, 0, 0.71);
+`;
+
 export const AuthTitle = styled.Text`
   color: ${(props) => props.theme.pink};
   font-size: 24px;

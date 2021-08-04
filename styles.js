@@ -8,7 +8,7 @@ export const HomeBackground = styled.ImageBackground`
 
 export const OverlayContainer = styled.View`
   flex: 1;
-  background-color: rgba(0, 9, 50, 0.6);
+  background-color: rgba(0, 0, 0, 0.71);
 `;
 
 export const HomeUpText = styled.View`
