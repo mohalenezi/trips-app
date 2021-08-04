@@ -58,29 +58,29 @@ const TripDetail = ({ route, navigation }) => {
         <>
           <View style={{ flex: "1" }}>
             <Flex h={40} w={80} mt={10}>
-              <Box style={styles.container}>
-                <Button
-                  onlyIcon
-                  icon="form"
-                  iconFamily="antdesign"
-                  iconSize={50}
-                  color="#50D050"
-                  iconColor="#fff"
-                  style={{ width: 80, height: 80 }}
-                  onPress={handelUpdate}
-                  oldTrip={trip}
-                ></Button>
-                <Button
-                  onlyIcon
-                  icon="delete"
-                  iconFamily="antdesign"
-                  iconSize={50}
-                  color="#FF0000"
-                  iconColor="#fff"
-                  style={{ width: 80, height: 80 }}
-                  onPress={handleDelete}
-                ></Button>
-              </Box>
+              <Button
+                onlyIcon
+                icon="form"
+                iconFamily="antdesign"
+                iconSize={50}
+                color="#50D050"
+                iconColor="#fff"
+                style={styles.ButtonStyle2}
+                onPress={handelUpdate}
+                oldTrip={trip}
+              ></Button>
+
+              <Button
+                onlyIcon
+                icon="delete"
+                iconFamily="antdesign"
+                iconSize={50}
+                color="#FF0000"
+                iconColor="#fff"
+                style={styles.ButtonStyle}
+                onPress={handleDelete}
+              ></Button>
+
               <Spacer />
             </Flex>
           </View>
@@ -93,14 +93,18 @@ const TripDetail = ({ route, navigation }) => {
 export default observer(TripDetail);
 
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    alignItems: "center",
+  ButtonStyle: {
+    top: 34,
+    width: 80,
+    height: 80,
     position: "absolute",
+  },
+  ButtonStyle2: {
+    top: 34,
+    width: 80,
+    height: 80,
     bottom: 30,
-    right: 20,
-    marginLeft: 50,
-    justifyContent: "space-between",
+    right: -110,
+    position: "absolute",
   },
 });
