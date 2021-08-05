@@ -7,6 +7,7 @@ import {
   AuthButtonText,
   AuthButton,
 } from "./styles";
+import { Input, Block } from "galio-framework";
 
 //observer
 import { observer } from "mobx-react";
@@ -28,21 +29,33 @@ const AddModal = ({ navigation }) => {
   return (
     <AuthContainer>
       <AuthTitle>Add A Trip</AuthTitle>
-      <AuthTextInput
+      <Input
         placeholder="title"
         autoCapitalize="none"
         onChangeText={(title) => setTrip({ ...trip, title })}
+        style={{ borderColor: "green" }}
+        bottomHelp
+        placeholderTextColor="#4F8EC9"
       />
-      <AuthTextInput
+      <Input
         placeholder="description"
         autoCapitalize="none"
         onChangeText={(description) => setTrip({ ...trip, description })}
+        style={{ borderColor: "green" }}
+        help="Add your description!"
+        bottomHelp
+        placeholderTextColor="#4F8999"
       />
-      <AuthTextInput
+      <Input
         placeholder="image's link"
         autoCapitalize="none"
         onChangeText={(image) => setTrip({ ...trip, image })}
+        style={{ borderColor: "green" }}
+        help="Add your image!"
+        bottomHelp
+        placeholderTextColor="#4F8999"
       />
+
       <AuthButton
         onPress={(() => navigation.navigate("TripList"), handleSubmit)}
       >

@@ -3,6 +3,8 @@ import tripStore from "../../stores/tripStore";
 import { List } from "native-base";
 import TripItem from "../trip/TripItem";
 import { useNavigation } from "@react-navigation/native";
+import { grid } from "styled-system";
+import { ListWrapper } from "../trip/styles";
 
 const ProfileTripList = ({ userId }) => {
   const navigation = useNavigation();
@@ -13,7 +15,7 @@ const ProfileTripList = ({ userId }) => {
       <TripItem trip={trip} key={trip.id} navigation={navigation} />
     ));
 
-  return <List>{trips}</List>;
+  return <ListWrapper>{trips}</ListWrapper>;
 };
 
 export default ProfileTripList;

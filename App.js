@@ -12,7 +12,7 @@ import RootNavigator from "./components/Navigation/index";
 
 const theme = {
   mainColor: "#293241",
-  backgroundColor: "#e0fbfc",
+  backgroundColor: "#b7b7a4",
   pink: "#f283a2",
   red: "red",
   white: "#fff",

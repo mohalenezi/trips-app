@@ -7,6 +7,7 @@ import {
   AuthButtonText,
   AuthButton,
 } from "./styles";
+import { Input, Block } from "galio-framework";
 
 //observer
 import { observer } from "mobx-react";
@@ -24,18 +25,25 @@ const ProfileUpdateModal = ({ navigation, route }) => {
   return (
     <AuthContainer>
       <AuthTitle>Update Profile</AuthTitle>
-      <AuthTextInput
+      <Input
         placeholder="Bio"
         defaultValue={oldProfile.bio}
         autoCapitalize="none"
         onChangeText={(bio) => setProfile({ ...profile, bio })}
+        style={{ borderColor: "green" }}
+        bottomHelp
+        placeholderTextColor="#4F8EC9"
       />
-      <AuthTextInput
+      <Input
         placeholder="image's link"
         defaultValue={oldProfile.image}
         autoCapitalize="none"
         onChangeText={(image) => setProfile({ ...profile, image })}
+        style={{ borderColor: "green" }}
+        bottomHelp
+        placeholderTextColor="#4F8EC9"
       />
+
       <AuthButton onPress={handleSubmit}>
         <AuthButtonText>Update</AuthButtonText>
       </AuthButton>
