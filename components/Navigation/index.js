@@ -31,7 +31,7 @@ export default RootNavigator = () => {
       initialRouteName="Home"
       screenOptions={{
         headerStyle: {
-          backgroundColor: "#90d4ed",
+          backgroundColor: "#6b705c",
         },
         headerTintColor: "white",
         headerTitleStyle: {

@@ -11,7 +11,7 @@ const ProfileButton = ({ userId }) => {
       onlyIcon
       icon="idcard"
       iconFamily="AntDesign"
-      iconSize={50}
+      iconSize={30}
       color="#0099ff"
       iconColor="#fff"
       style={styles.ButtonStyle2}
@@ -24,9 +24,9 @@ export default ProfileButton;
 
 const styles = StyleSheet.create({
   ButtonStyle2: {
-    width: 80,
-    height: 80,
-    bottom: 20,
+    width: 40,
+    height: 40,
+    bottom: 10,
     right: 10,
     position: "absolute",
   },

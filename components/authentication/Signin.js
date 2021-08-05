@@ -9,6 +9,7 @@ import {
   AuthOther,
   AuthBackground,
 } from "./styles";
+import { Input, Block } from "galio-framework";
 
 //stores
 import authStore from "../../stores/authStore";
@@ -34,19 +35,24 @@ const Signin = ({ navigation }) => {
     >
       <AuthContainer>
         <AuthTitle>Sign in</AuthTitle>
-        <AuthTextInput
+        <Input
           placeholderTextColor="grey"
           placeholder="username"
           autoCapitalize="none"
           onChangeText={(username) => setUser({ ...user, username })}
+          rounded
         />
-        <AuthTextInput
-          placeholderTextColor="grey"
+
+        <Input
           placeholder="password"
+          password
+          viewPass
+          placeholderTextColor="grey"
           autoCapitalize="none"
           secureTextEntry={true}
           onChangeText={(password) => setUser({ ...user, password })}
         />
+
         <AuthButton onPress={handleSubmit}>
           <AuthButtonText>Sign in</AuthButtonText>
         </AuthButton>

@@ -1,4 +1,6 @@
 import React from "react";
+import { StyleSheet } from "react-native";
+
 import {
   HomeBackground,
   OverlayContainer,
@@ -7,7 +9,7 @@ import {
   BottomStyling,
   ButtonStyling,
 } from "../styles";
-
+import { Input, Block } from "galio-framework";
 const Home = ({ navigation }) => {
   return (
     <HomeBackground

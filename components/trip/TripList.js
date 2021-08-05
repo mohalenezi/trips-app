@@ -11,7 +11,11 @@ import TripItem from "./TripItem";
 
 //stores
 import tripStore from "../../stores/tripStore";
+
+import { ListWrapper } from "./styles";
+
 import authStore from "../../stores/authStore";
+
 
 import { SafeAreaView, ScrollView, StyleSheet } from "react-native";
 import { Text } from "galio-framework";
@@ -33,7 +37,7 @@ const TripList = ({ navigation }) => {
     ));
 
   return (
-    <>
+    <ListWrapper>
       <ScrollView>
         <List>{tripsList}</List>
       </ScrollView>
@@ -43,13 +47,13 @@ const TripList = ({ navigation }) => {
           icon="pluscircleo"
           iconFamily="antdesign"
           iconSize={50}
-          color="#50D050"
+          color="#588157"
           iconColor="#fff"
           style={{ width: 60, height: 60 }}
           onPress={() => navigation.navigate("AddModal")}
         ></Button>
       </Box>
-    </>
+    </ListWrapper>
   );
 };
 

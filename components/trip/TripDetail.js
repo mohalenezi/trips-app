@@ -1,10 +1,23 @@
 import { Flex, Spacer, Spinner, Box } from "native-base";
 import { Button } from "galio-framework";
 import React, { useEffect } from "react";
-import { View, Text, Image, Dimensions, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  Dimensions,
+  StyleSheet,
+  ScrollView,
+} from "react-native";
 import authStore from "../../stores/authStore";
 import tripStore from "../../stores/tripStore";
-import { TextStyled } from "./styles";
+import {
+  TitleStyled,
+  DescrpStyled,
+  ImageTrp,
+  BtnContainer,
+  ImgContainer,
+} from "./styles";
 import ProfileButton from "../buttons/ProfileButton";
 import profileStore from "../../stores/profileStore";
 import { AntDesign } from "@expo/vector-icons";
@@ -45,47 +58,52 @@ const TripDetail = ({ route, navigation }) => {
   if (tripStore.loading || profileStore.loading) return <Spinner />;
   return (
     <View>
-      <Image
-        source={{ uri: trip.image }}
-        style={{ width: imageWidth, height: imageHeight }}
-      />
-      <TextStyled>{trip.title}</TextStyled>
-      <Text>{trip.description}</Text>
-      {/* <TextStyled>{profile.username}</TextStyled> */}
+      <ScrollView>
+        <ImgContainer>
+          <ImageTrp
+            source={{ uri: trip.image }}
+            style={{ width: imageWidth, height: imageHeight }}
+          />
+        </ImgContainer>
+        <TitleStyled>{trip.title}</TitleStyled>
+        <DescrpStyled>{trip.description}</DescrpStyled>
+        {/* <TextStyled>{profile.username}</TextStyled> */}
 
-      <ProfileButton userId={trip.userId} />
-      {authStore.user.id === trip.userId && (
         <>
-          <View style={{ flex: "1" }}>
-            <Flex h={40} w={80} mt={10}>
-              <Button
-                onlyIcon
-                icon="form"
-                iconFamily="antdesign"
-                iconSize={50}
-                color="#50D050"
-                iconColor="#fff"
-                style={styles.ButtonStyle2}
-                onPress={handelUpdate}
-                oldTrip={trip}
-              ></Button>
+          <ProfileButton userId={trip.userId} />
 
-              <Button
-                onlyIcon
-                icon="delete"
-                iconFamily="antdesign"
-                iconSize={50}
-                color="#FF0000"
-                iconColor="#fff"
-                style={styles.ButtonStyle}
-                onPress={handleDelete}
-              ></Button>
+          {authStore.user.id === trip.userId && (
+            <View style={{ flex: "1" }}>
+              <Flex h={40} w={80} mt={10}>
+                <Button
+                  onlyIcon
+                  icon="form"
+                  iconFamily="antdesign"
+                  iconSize={30}
+                  color="#50D050"
+                  iconColor="#fff"
+                  style={styles.ButtonStyle2}
+                  onPress={handelUpdate}
+                  oldTrip={trip}
+                ></Button>
 
-              <Spacer />
-            </Flex>
-          </View>
+                <Button
+                  onlyIcon
+                  icon="delete"
+                  iconFamily="antdesign"
+                  iconSize={30}
+                  color="#FF0000"
+                  iconColor="#fff"
+                  style={styles.ButtonStyle}
+                  onPress={handleDelete}
+                ></Button>
+
+                <Spacer />
+              </Flex>
+            </View>
+          )}
         </>
-      )}
+      </ScrollView>
     </View>
   );
 };
@@ -94,17 +112,17 @@ export default observer(TripDetail);
 
 const styles = StyleSheet.create({
   ButtonStyle: {
-    top: 34,
-    width: 80,
-    height: 80,
+    width: 40,
+    height: 40,
+    bottom: 10,
+    right: 80,
     position: "absolute",
   },
   ButtonStyle2: {
-    top: 34,
-    width: 80,
-    height: 80,
-    bottom: 30,
-    right: -110,
+    width: 40,
+    height: 40,
+    bottom: 10,
+    left: 10,
     position: "absolute",
   },
 });

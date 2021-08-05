@@ -9,6 +9,7 @@ import {
   AuthOther,
   AuthBackground,
 } from "./styles";
+import { Input, Block } from "galio-framework";
 
 //observer
 import { observer } from "mobx-react";
@@ -32,18 +33,23 @@ const Signup = ({ navigation }) => {
     >
       <AuthContainer>
         <AuthTitle>Sign up</AuthTitle>
-        <AuthTextInput
+
+        <Input
           placeholderTextColor="grey"
           placeholder="username"
           autoCapitalize="none"
           onChangeText={(username) => setUser({ ...user, username })}
+          rounded
         />
-        <AuthTextInput
+
+        <Input
           placeholderTextColor="grey"
           placeholder="password"
           autoCapitalize="none"
           secureTextEntry={true}
           onChangeText={(password) => setUser({ ...user, password })}
+          password
+          viewPass
         />
         <AuthButton onPress={handleSubmit}>
           <AuthButtonText>Sign up</AuthButtonText>

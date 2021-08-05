@@ -1,5 +1,7 @@
 import { observer } from "mobx-react";
-import { Box, Button } from "native-base";
+import { Box, Spacer } from "native-base";
+import { Button } from "galio-framework";
+
 import React, { useEffect } from "react";
 import {
   Text,
@@ -11,8 +13,9 @@ import {
 } from "react-native";
 import authStore from "../../stores/authStore";
 import profileStore from "../../stores/profileStore";
+import { ListWrapper } from "../trip/styles";
 import ProfileTripList from "./ProfileTripList";
-
+import { NameStyled, BioStyled } from "./styles";
 const ProfileDetail = ({ route, navigation }) => {
   useEffect(() => {
     profileStore.fetchProfiles();
@@ -21,29 +24,36 @@ const ProfileDetail = ({ route, navigation }) => {
   let profile = profileStore.getProfileById(userId);
 
   return (
-    <SafeAreaView>
-      <ScrollView>
-        <Box style={styles.container}>
-          <Image
-            source={{ uri: profile?.image }}
-            style={{ width: Dimensions.get("window").width, height: 400 }}
-          />
-        </Box>
-        <Text style={styles.title}>{profile?.username}</Text>
-        <Text style={styles.bio}>{profile?.bio}</Text>
-        <ProfileTripList userId={userId} />
-        {authStore.user.id === userId && (
-          <>
-            <Button
-              onPress={() =>
-                navigation.navigate("ProfileUpdateModal", {
-                  oldProfile: profile,
-                })
-              }
-            >
-              Edit profile
-            </Button>
-            <Button
+
+    <>
+      <SafeAreaView style={{ flex: -1, backgroundColor: "#b7b7a4" }} />
+      <SafeAreaView style={{ flex: -4, backgroundColor: "#b7b7a4" }}>
+        <ScrollView>
+          <ListWrapper>
+            <Box style={styles.container}>
+              <Image
+                source={{ uri: profile?.image }}
+                style={{ width: Dimensions.get("window").width, height: 400 }}
+              />
+            </Box>
+            <NameStyled>{profile?.username}</NameStyled>
+            <BioStyled>{profile?.bio}</BioStyled>
+            <ProfileTripList userId={userId} />
+            {authStore.user.id === userId && (
+              <Box style={styles.container2}>
+                <Button
+                  round
+                  size="small"
+                  color="#588157"
+                  onPress={() =>
+                    navigation.navigate("ProfileUpdateModal", {
+                      oldProfile: profile,
+                    })
+                  }
+                >
+                  Edit profile
+                </Button>
+ <Button
               style={styles.signoutButton}
               onPress={() => {
                 authStore.signout();
@@ -52,12 +62,17 @@ const ProfileDetail = ({ route, navigation }) => {
             >
               Sign out
             </Button>
-          </>
-        )}
-      </ScrollView>
-    </SafeAreaView>
-  );
-};
+              </Box>
+            )}
+          </ListWrapper>
+        </ScrollView>
+      </SafeAreaView>
+    </>
+
+    
+
+
+export default observer(ProfileDetail);
 
 const styles = StyleSheet.create({
   container: {
@@ -71,11 +86,13 @@ const styles = StyleSheet.create({
   bio: {
     fontSize: 20,
   },
+  container2: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
   signoutButton: {
     backgroundColor: "red",
     marginTop: 10,
     marginBottom: 10,
   },
 });
-
-export default observer(ProfileDetail);

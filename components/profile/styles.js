@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 
 export const ListWrapper = styled.View`
-  margin-top: 10%;
+  background-color: #b7b7a4;
 `;
 
 export const TextInputStyled = styled.TextInput`
@@ -36,7 +36,7 @@ export const OverlayContainer = styled.View`
 `;
 
 export const AuthTitle = styled.Text`
-  color: ${(props) => props.theme.pink};
+  color: #6b705c;
   font-size: 24px;
   margin-bottom: 20px;
   border-bottom-color: ${(props) => props.theme.pink};
@@ -55,13 +55,14 @@ export const AuthTextInput = styled.TextInput`
 export const AuthButton = styled.TouchableOpacity`
   align-self: stretch;
   align-items: center;
+  border-radius: 10px;
   padding: 20px;
-  background-color: ${(props) => props.theme.blue};
+  background-color: #6b705c;
   margin-top: 30px;
 `;
 
 export const AuthButtonText = styled.Text`
-  color: #fcfdff;
+  color: #b7b7a4;
   font-weight: bold;
   font-size: 18px;
 `;
@@ -75,4 +76,24 @@ export const TextStyled = styled.Text`
   font-weight: 600;
   font-size: 30px;
   margin-left: 10px;
+`;
+
+export const NameStyled = styled.Text`
+  padding: 10px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  border-width: 30px;
+  border-color: #b7b7a4;
+  background-color: #1b4332;
+`;
+export const BioStyled = styled.Text`
+  margin-left: 1%;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  font-size: 20px;
+  font-style: italic;
+  text-align: justify;
 `;
