@@ -23,8 +23,9 @@ const AddModal = ({ navigation }) => {
 
   const handleSubmit = async () => {
     // console.log(trip);
-    await tripStore.createTrip(trip);
-    navigation.navigate("TripList");
+    await tripStore.createTrip(trip, navigation);
+    // navigation.navigate("TripList");
+    // navigation.goBack(null);
   };
   return (
     <AuthContainer>

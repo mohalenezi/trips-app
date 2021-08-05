@@ -17,9 +17,11 @@ import profileStore from "../../stores/profileStore";
 import { ListWrapper } from "../trip/styles";
 import ProfileTripList from "./ProfileTripList";
 import { NameStyled, BioStyled } from "./styles";
+import tripStore from "../../stores/tripStore";
 const ProfileDetail = ({ route, navigation }) => {
   useEffect(() => {
     profileStore.fetchProfiles();
+    tripStore.fetchTrips();
   }, []);
   const { userId } = route.params;
   let profile = profileStore.getProfileById(userId);

@@ -18,10 +18,9 @@ const TripModal = ({ navigation, route }) => {
   const { oldTrip } = route.params;
   const [trip, setTrip] = useState(oldTrip);
 
-  const handleSubmit = async () => {
-    await tripStore.tripUpdate(trip);
+  const handleSubmit = () => {
+    tripStore.tripUpdate(trip, navigation);
     // navigation.navigate("TripList");
-    navigation.goBack(null);
   };
   return (
     <AuthContainer>

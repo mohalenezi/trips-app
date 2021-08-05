@@ -20,19 +20,22 @@ class TripStore {
     }
   };
 
-  createTrip = async (newTrip) => {
+  createTrip = async (newTrip, navigation) => {
     try {
       const formData = new FormData(); //added form data by enezi and i have uploaded an image
       for (const key in newTrip) formData.append(key, newTrip[key]);
       const response = await instance.post("/trips", formData);
       response.data.trips = [];
       this.trips.push(response.data);
+
+      console.log(response.data);
+      navigation.navigate("ProfileDetail", { userId: response.data.userId });
     } catch (error) {
       console.error(error);
     }
   };
 
-  tripUpdate = async (updateTrip) => {
+  tripUpdate = async (updateTrip, navigation) => {
     console.log(updateTrip);
     try {
       const response = await instance.put(
@@ -43,7 +46,8 @@ class TripStore {
       const trip = this.trips.find((trip) => trip.id === response.data.id);
 
       for (const key in trip) trip[key] = response.data[key];
-      console.log(trip);
+      // console.log(trip);
+      navigation.replace("TripDetail", { trip: trip });
     } catch (error) {
       console.log(error);
     }
