@@ -64,7 +64,13 @@ export const ItemOwnerStyled = styled.Text`
   font-weight: 500;
   font-size: 15px;
   margin-left: 10px;
+  color: grey;
 `;
+
+export const ItemOwnerNameStyled = styled.Text`
+  font-weight: bold;
+`;
+
 export const TextStyled = styled.Text`
   font-weight: 600;
   font-size: 30px;

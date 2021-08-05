@@ -6,7 +6,7 @@ import { observer } from "mobx-react";
 import { Text, Image } from "react-native";
 //native-base
 import { List, Box } from "native-base";
-import { ItemTextStyled, ItemOwnerStyled } from "./styles";
+import { ItemTextStyled, ItemOwnerStyled, ItemOwnerNameStyled } from "./styles";
 
 import authStore from "../../stores/authStore";
 import profileStore from "../../stores/profileStore";
@@ -31,7 +31,10 @@ const TripItem = ({ trip, navigation }) => {
       <Image source={{ uri: trip.image }} style={{ width: 100, height: 100 }} />
       <Box>
         <ItemTextStyled>{trip.title}</ItemTextStyled>
-        <ItemOwnerStyled>Created By: {profile?.username}</ItemOwnerStyled>
+        <ItemOwnerStyled>
+          Created By:{" "}
+          <ItemOwnerNameStyled>{profile?.username}</ItemOwnerNameStyled>
+        </ItemOwnerStyled>
       </Box>
     </List.Item>
   );
