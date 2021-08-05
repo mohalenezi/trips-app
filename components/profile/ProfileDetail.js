@@ -33,13 +33,26 @@ const ProfileDetail = ({ route, navigation }) => {
         <Text style={styles.bio}>{profile?.bio}</Text>
         <ProfileTripList userId={userId} />
         {authStore.user.id === userId && (
-          <Button
-            onPress={() =>
-              navigation.navigate("ProfileUpdateModal", { oldProfile: profile })
-            }
-          >
-            Edit profile
-          </Button>
+          <>
+            <Button
+              onPress={() =>
+                navigation.navigate("ProfileUpdateModal", {
+                  oldProfile: profile,
+                })
+              }
+            >
+              Edit profile
+            </Button>
+            <Button
+              style={styles.signoutButton}
+              onPress={() => {
+                authStore.signout();
+                navigation.goBack("Home");
+              }}
+            >
+              Sign out
+            </Button>
+          </>
         )}
       </ScrollView>
     </SafeAreaView>
@@ -57,6 +70,11 @@ const styles = StyleSheet.create({
   },
   bio: {
     fontSize: 20,
+  },
+  signoutButton: {
+    backgroundColor: "red",
+    marginTop: 10,
+    marginBottom: 10,
   },
 });
 

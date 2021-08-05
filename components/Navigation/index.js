@@ -13,6 +13,7 @@ import AddModal from "../trip/AddModal";
 import TripDetail from "../trip/TripDetail";
 import ProfileDetail from "../profile/ProfileDetail";
 import ProfileUpdateModal from "../profile/ProfileUpdateModal";
+import OwnProfileButton from "../buttons/OwnProfileButton";
 
 const Stack = createStackNavigator();
 
@@ -42,7 +43,7 @@ export default RootNavigator = () => {
         component={TripList}
         options={{
           title: "Explore",
-          headerRight: () => <SignoutButton />,
+          headerRight: () => <OwnProfileButton />,
           headerLeft: null,
           gestureEnabled: false, //not going to be able to go to home when you swipe
         }}
@@ -51,7 +52,8 @@ export default RootNavigator = () => {
         name="TripDetail"
         component={TripDetail}
         options={{
-          headerRight: () => <SignoutButton />,
+          headerRight: () => <OwnProfileButton />,
+          // <SignoutButton />,
         }}
       />
       <Stack.Screen
