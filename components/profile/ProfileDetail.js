@@ -10,6 +10,7 @@ import {
   Dimensions,
   ScrollView,
   SafeAreaView,
+  View,
 } from "react-native";
 import authStore from "../../stores/authStore";
 import profileStore from "../../stores/profileStore";
@@ -29,6 +30,24 @@ const ProfileDetail = ({ route, navigation }) => {
       <SafeAreaView style={{ flex: -4, backgroundColor: "#b7b7a4" }}>
         <ScrollView>
           <ListWrapper>
+            {authStore.user.id === userId && (
+              <Button
+                onlyIcon
+                icon="pluscircleo"
+                iconFamily="antdesign"
+                iconSize={50}
+                color="#588157"
+                iconColor="#fff"
+                style={{
+                  position: "absolute",
+                  top: 530,
+                  right: 20,
+                  width: 60,
+                  height: 60,
+                }}
+                onPress={() => navigation.navigate("AddModal")}
+              ></Button>
+            )}
             <Box style={styles.container}>
               <Image
                 source={{ uri: profile?.image }}
@@ -38,6 +57,7 @@ const ProfileDetail = ({ route, navigation }) => {
             <NameStyled>{profile?.username}</NameStyled>
             <BioStyled>{profile?.bio}</BioStyled>
             <ProfileTripList userId={userId} />
+
             {authStore.user.id === userId && (
               <Box style={styles.container2}>
                 <Button
