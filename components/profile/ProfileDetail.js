@@ -24,7 +24,6 @@ const ProfileDetail = ({ route, navigation }) => {
   let profile = profileStore.getProfileById(userId);
 
   return (
-
     <>
       <SafeAreaView style={{ flex: -1, backgroundColor: "#b7b7a4" }} />
       <SafeAreaView style={{ flex: -4, backgroundColor: "#b7b7a4" }}>
@@ -53,24 +52,23 @@ const ProfileDetail = ({ route, navigation }) => {
                 >
                   Edit profile
                 </Button>
- <Button
-              style={styles.signoutButton}
-              onPress={() => {
-                authStore.signout();
-                navigation.goBack("Home");
-              }}
-            >
-              Sign out
-            </Button>
+                <Button
+                  style={styles.signoutButton}
+                  onPress={() => {
+                    authStore.signout();
+                    navigation.goBack("Home");
+                  }}
+                >
+                  Sign out
+                </Button>
               </Box>
             )}
           </ListWrapper>
         </ScrollView>
       </SafeAreaView>
     </>
-
-    
-
+  );
+};
 
 export default observer(ProfileDetail);
 

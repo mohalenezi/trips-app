@@ -87,7 +87,7 @@ export const ImageTrp = styled.Image`
   margin-top: 10px;
   padding: 10px;
   padding-bottom: 500px;
-  text-align: center;
+  /* text-align: center; */
   border-radius: 15px;
   border-width: 10px;
   border-color: #1b4332;

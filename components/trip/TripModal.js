@@ -20,7 +20,8 @@ const TripModal = ({ navigation, route }) => {
 
   const handleSubmit = async () => {
     await tripStore.tripUpdate(trip);
-    navigation.navigate("TripList");
+    // navigation.navigate("TripList");
+    navigation.goBack(null);
   };
   return (
     <AuthContainer>
