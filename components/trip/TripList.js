@@ -11,6 +11,7 @@ import TripItem from "./TripItem";
 
 //stores
 import tripStore from "../../stores/tripStore";
+import authStore from "../../stores/authStore";
 
 import { SafeAreaView, ScrollView, StyleSheet } from "react-native";
 import { Text } from "galio-framework";
@@ -25,9 +26,11 @@ const TripList = ({ navigation }) => {
     tripStore.fetchTrips();
   }, []);
   if (tripStore.loading) return <Spinner />;
-  const tripsList = tripStore?.trips.map((trip) => (
-    <TripItem trip={trip} key={trip.id} navigation={navigation} />
-  ));
+  const tripsList = tripStore?.trips
+    .filter((trip) => trip.userId !== authStore.user.id)
+    .map((trip) => (
+      <TripItem trip={trip} key={trip.id} navigation={navigation} />
+    ));
 
   return (
     <>
